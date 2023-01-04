@@ -1,25 +1,30 @@
 #include "main.h"
 
 /**
- * _strstr - entry point
- * @haystck: input
- * @needle: input
+ * _strstr - first occurrence of the substring needle in the string haystack
+ * @haystck: main str to be examined
+ * @needle: searched in haystack
  *
  * Return: Always 0 (Success)
  */
 char *_strstr(char *haystack, char *needle)
 {
-	for (; *haystack != '\0'; haystack++)
+	char *str1, *str2; /*Declaring variables*/
+
+	while (*haystack != '\0')
 	{
-		char *l = haystack;
-		char *p = needle;
-		while (*l == *p && *p != '\0')
+		str1 = haystack; /*values*/
+		str2 = needle;
+
+		/*star WHILE*/
+		while (*haystack != '\0' && *str2 != '\0' && *haystack == *str2)
 		{
-			l++;
-			p++;
+			haystack++;
+			str2++;
 		}
-		if (*p == '\0')
-			return (haystack);
+		if (*str2 == '\0')
+			return (str1);
+		haystack = str1 + 1;
 	}
 	return (0);
 }
